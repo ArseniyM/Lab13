@@ -7,7 +7,6 @@ void Smena_Imeni(string Rename, TelBook& Book) {
     Book.Set_Name(Rename); 
 }
 
-
 void Smena_Namber(string NewNam, TelBook& Book) {
     for (int i = 0; i < 11; i++)
         Book.Set_Namber(i, NewNam[i] - 0x30);
@@ -31,7 +30,6 @@ int main() {
     cout << "Введите количество номеров:";
     cin >> K;
     TelBook* b1= new TelBook[K];
-    TelBook* b2 = new TelBook[2];
     for (int i = 0; i < K;i++) {
         cin >> b1[i];
         cout << b1[i];
@@ -53,7 +51,9 @@ int main() {
         cout << b1[i];
     }
     }
+    int NewCoppy=0;
     cout << "Копировать значения списка? Y-да N-нет:";
+    TelBook* b2 = new TelBook[2];
     cin >> q;
     if (q == 'Y' || q == 'y') {
         b2[0] = Back(b1[0]);

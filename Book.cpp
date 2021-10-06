@@ -2,6 +2,7 @@
 #include "Book.h"
 using namespace std;
 
+
 TelBook::TelBook() {
     Namber = new int[11];
     Name = "";
@@ -37,6 +38,13 @@ int TelBook::Get_Namber(int j) {
     return Namber[j];
 }
 
+TelBook& TelBook::operator=(const TelBook& zZz) {
+    if (&zZz == this) return *this;
+    Namber=zZz.Namber;
+    Name = zZz.Name;
+    return *this;
+}
+
 istream& operator >>(istream& in, TelBook& a) {
     string s;
     if (a.Get_Name() == "") {
@@ -48,7 +56,7 @@ istream& operator >>(istream& in, TelBook& a) {
         cout << "»м€: " << a.Get_Name() << endl;
     }
     s = "";
-    cout << "¬ведите номер: ";
+    cout << "¬ведите номер (в формате +# (###) ###-##-##): ";
     in >> s;
     while (s.size()!=11)
     {
@@ -76,11 +84,4 @@ ostream& operator <<(ostream& out, TelBook& a) {
         out << a.Get_Namber(i);
     out << endl;
     return out;
-}
-
-TelBook& TelBook::operator=(const TelBook& zZz) {
-    if (&zZz == this) return *this;
-    Namber=zZz.Namber;
-    Name = zZz.Name;
-    return *this;
 }
